@@ -4,7 +4,9 @@ pipeline {
       args '-p 3000:3000'
       image 'node:10-alpine'
     }
-
+  }
+  parameters {
+    string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
   }
   stages {
     stage('Build') {
