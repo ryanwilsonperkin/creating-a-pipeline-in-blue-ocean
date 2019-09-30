@@ -2,11 +2,9 @@ pipeline {
   agent {
     docker {
       args '-p 3000:3000'
-      image 'node:10-alpine'
+      image 'node:6-alpine'
     }
-  }
-  parameters {
-    string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+
   }
   stages {
     stage('Build') {
@@ -29,5 +27,8 @@ pipeline {
         sh './jenkins/scripts/kill.sh'
       }
     }
+  }
+  parameters {
+    string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
   }
 }
